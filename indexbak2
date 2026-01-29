@@ -114,10 +114,10 @@
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">Experimental Results</h2>
       
-      <h3 class="title is-5 has-text-centered">Robustness Evaluation & Generalization</h3>
-      <div class="columns is-centered is-mobile is-multiline is-variable is-1">
+      <h3 class="title is-5 has-text-centered">Robustness Evaluation (Banana Tasks)</h3>
+      <div class="columns is-centered is-mobile">
         
-        <div class="column is-one-fifth-desktop is-6-mobile">
+        <div class="column is-3-desktop is-6-mobile">
           <div class="video-container">
             <video autoplay controls muted loop playsinline>
               <source src="./static/videos/normal_banana.mp4" type="video/mp4">
@@ -126,34 +126,35 @@
           </div>
         </div>
 
-        <div class="column is-one-fifth-desktop is-6-mobile">
+        <div class="column is-3-desktop is-6-mobile">
           <div class="video-container">
             <video autoplay controls muted loop playsinline>
               <source src="./static/videos/noise_banana.mp4" type="video/mp4">
             </video>
-            <div class="video-caption">Grasp w/ noise</div>
+            <div class="video-caption">Grasp banana with noise</div>
           </div>
         </div>
 
-        <div class="column is-one-fifth-desktop is-6-mobile">
+        <div class="column is-3-desktop is-6-mobile">
           <div class="video-container">
             <video autoplay controls muted loop playsinline>
               <source src="./static/videos/muti_banana.mp4" type="video/mp4">
             </video>
-            <div class="video-caption">Repeated grasp</div>
+            <div class="video-caption">Repeatedly grasp banana </div>
           </div>
         </div>
 
-        <div class="column is-one-fifth-desktop is-6-mobile">
+        <div class="column is-3-desktop is-6-mobile">
           <div class="video-container">
             <video autoplay controls muted loop playsinline>
               <source src="./static/videos/pumb_banana.mp4" type="video/mp4">
             </video>
-            <div class="video-caption">Light interference</div>
+            <div class="video-caption">Grasp banana with light interference</div>
           </div>
         </div>
 
-        <div class="column is-one-fifth-desktop is-6-mobile">
+        
+        <div class="column is-3-desktop is-6-mobile">
           <div class="video-container">
             <video autoplay controls muted loop playsinline>
               <source src="./static/videos/fold_clothes.mp4" type="video/mp4">
@@ -163,9 +164,33 @@
         </div>
 
       </div>
+
+      <!-- <br>
+      <h3 class="title is-5 has-text-centered">Generalization Task (Cloth Folding)</h3>
+      <div class="columns is-centered">
+        <div class="column is-half">
+          <div class="video-container">
+            <video autoplay controls muted loop playsinline>
+              <source src="./static/videos/fold_clothes.mp4" type="video/mp4">
+            </video>
+            <div class="video-caption">Long-Horizon Cloth Folding</div>
+          </div>
+        </div>
+      </div> -->
       
     </div>
   </div>
 </section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <p>
+        Project page template based on <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+      </p>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
