@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="LatentVLA: Enhancing Long-Horizon Vision-Language-Action Models with a Latent World Model">
+        content="NoiseVLA: Adapting Pre-trained VLAs to Specific Tasks through Noise-Space Reinforcement learning">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>LatentVLA Demo</title>
+  <title>NoiseVLA Demo</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
@@ -56,7 +56,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">LatentVLA: Enhancing Long-Horizon Vision-Language-Action Models with a Latent World Model</h1>
+          <h1 class="title is-1 publication-title">NoiseVLA: Adapting Pre-trained VLAs to Specific Tasks through Noise-Space Reinforcement learning</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">Anonymous Authors</span>
           </div>
@@ -96,12 +96,16 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Learning an accurate world model to predict future states is fundamental for Vision-Language-Action (VLA) agents to achieve long-horizon reasoning and effective planning. 
-            However, prevailing world models predominantly operate in raw pixel space, which presents two critical challenges: (1) high-dimensional observations introduce significant task-irrelevant perceptual noise, leading to perceptual overfitting, and (2) the prohibitive computational cost of pixel-level autoregressive prediction limits the feasible modeling horizon. 
+            Vision-Language-Action (VLA) models trained purely with imitation learning often overfit to demonstration data, becoming brittle under mild distribution shift and prone to error accumulation once execution deviates from expert trajectories.
+            Existing adaptation methods, such as recollecting demonstrations for behavioral cloning(BC) or applying reinforcement learning(RL) directly to the entire VLA policy, are costly and slow to converge because they couple environment alignment with task generalization, forcing a large policy to simultaneously acquire environment-specific interaction priors and discover effective behaviors through exploration in its full action space.
           </p>
           <p>
-            In this paper, we propose LatentVLA, a novel paradigm that performs world modeling in a highly compressed latent space. By leveraging a lightweight Adaptive Attention-based Pooling mechanism, we distill high-dimensional visual features into a single, semantically-rich latent world token per frame. This approach significantly reduces computational complexity, enabling the model to scale stably to long-horizon planning steps. 
-            Unlike pixel-level models, LatentVLA operates in a high-level semantic space to effectively decouple environmental dynamics from perceptual noise. Across LIBERO, Metaworld, and real-world Piper tasks, LatentVLA with lightweight LoRA fine-tuning on a  &pi;<sub>0</sub> base surpasses the significantly &pi;<sub>0.5</sub> model. This performance gap highlights the efficacy of our semantic abstraction mechanism over traditional scaling.
+            \textbf{We introduce noiseVLA}, a VLA model consisting of a vision-language backbone and an action expert trained with flow matching, which separates domain adaptation from task level improvement by encoding domain priors through lightweight imitation across multiple tasks and refining task behavior through RL in the latent noise space of action expert.
+            NoiseVLA addresses above coupling by first performing environment alignment through lightweight imitation over a small but diverse task set, allowing the policy to capture regularities in viewpoint, embodiment, and action patterns, and then enabling task generalization by freezing the VLA backbone and the flow matching action expert while applying GRPO only to a lightweight policy over latent noise inputs for unseen or harder tasks, thereby turning blind exploration in the original action space into guided search within a feasible subspace supported by the target environment.
+          </p>
+          <p>
+            Experiments on simulation and real world tasks demonstrate that noiseVLA consistently outperforms direct online fine-tuning and noise-space RL without environment alignment, yielding stronger initialization and better online adaptation. Our framework provides a simple and compute-efficient path for continually improving strong VLA policies with limited offline data and modest online interaction. 
+            Code and Demo have be released.
           </p>
         </div>
       </div>
